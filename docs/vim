@@ -1,0 +1,15 @@
+vim cheatsheet :
+
+vim has 3 modes 
+
+: - Command mode 
+shift+i - Insert mode
+esc - Last line mode
+
+
+commands :
+
+:q - quit if no changes were made
+:q! - quit and destroy any changes made
+:wq - write changes (save) and quit
+:x - similar to :wq, only write the file if changes were made, then 
