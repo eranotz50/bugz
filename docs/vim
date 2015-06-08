@@ -1,5 +1,7 @@
 vim cheatsheet :
 
+vim <file_name> : for example .git/config
+
 vim has 3 modes 
 
 : - Command mode 
