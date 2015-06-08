@@ -54,3 +54,6 @@ and our specific scripts under app. ( kinda like the soloution structure when us
 
 
 4) make a change and revert to previous commit 
+
+
+// 8.6 learning git fundementels.
