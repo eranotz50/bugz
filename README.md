@@ -50,3 +50,7 @@ and our specific scripts under app. ( kinda like the soloution structure when us
 3) Read about template , create a template for a bug object.
 
 **look for spell checking options in this IDE for this readme file.
+
+
+
+4) make a change and revert to previous commit 
