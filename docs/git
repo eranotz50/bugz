@@ -1,0 +1,11 @@
+git - distributed source control. 
+
+commands :  
+
+git status - check changes .
+git add <file_name> 
+git commit  -a <add> -m <message> "message"
+
+
+
+

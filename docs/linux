@@ -1,0 +1,15 @@
+linux cheatsheet : 
+
+ls -a <hidden> -l <permissions>   : like dir  
+cd .. : like cd.. 
+
+-------------------------------------------------------------
+
+permissions : - r w x <none> <read> <write> <execute>   
+
+char 1- file type  : d | - <directory|regular file>
+char 2-4 - owner permissions 
+char 5-7 - group permissions 
+char 8-10 - others persmissions 
+
+-------------------------------------------------------------
