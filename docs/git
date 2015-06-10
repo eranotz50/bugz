@@ -15,5 +15,8 @@ git add .   == adds all files.
 git commit  -a <add> -m <message> "message"
 
 
+ctrl+shift+Z == exit .
 
+git diff == diff before add to staging area.
+git diff --cached == diff between local and stageing area.
 
