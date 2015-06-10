@@ -11,6 +11,7 @@ commands :
 
 git status - check changes .
 git add <file_name> 
+git add .   == adds all files.
 git commit  -a <add> -m <message> "message"
 
 
