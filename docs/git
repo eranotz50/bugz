@@ -1,5 +1,12 @@
 git - distributed source control. 
 
+configuration : 
+
+git config --list  : all configurations.
+git config core.editor vim : set config parameter in this case setting default editor to vim.
+
+
+
 commands :  
 
 git status - check changes .

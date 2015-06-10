@@ -5,45 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
-    <style>
-      body {
-        padding-top: 60px;
-      }
-    </style>
-    <script>
-      function ChatController($scope) {
-        var socket = io.connect();
-
-        $scope.messages = [];
-        $scope.roster = [];
-        $scope.name = '';
-        $scope.text = '';
-
-        socket.on('connect', function () {
-          $scope.setName();
-        });
-
-        socket.on('message', function (msg) {
-          $scope.messages.push(msg);
-          $scope.$apply();
-        });
-
-        socket.on('roster', function (names) {
-          $scope.roster = names;
-          $scope.$apply();
-        });
-
-        $scope.send = function send() {
-          console.log('Sending message:', $scope.text);
-          socket.emit('message', $scope.text);
-          $scope.text = '';
-        };
-
-        $scope.setName = function setName() {
-          socket.emit('identify', $scope.name);
-        };
-      }
-    </script>
+  
+   
+   <!-- todo : add link to new bootstrap in the bower components folder -->
+  
   </head>
   <body ng-controller="OnLoadedController">
     
@@ -52,7 +17,7 @@
       Click Me !
     </button>
     
-    <div class="container" ng-controller="ChatController">
+    <div class="container" >
       <div class="navbar navbar-fixed-top navbar-inverse">
         <div class="navbar-inner">
           <div class="pull-right">
@@ -67,7 +32,7 @@
         <div class="span3">
           <ul class="nav nav-list well">
             <li class="nav-header">Local Users</li>
-            <li ng-repeat="user in roster" ng-bind="user" style="background-color: blue;" >
+            <li ng-repeat="user in roster" ng-bind="user" >
             </li>
           </ul>
         </div>

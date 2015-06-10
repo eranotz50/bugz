@@ -1,0 +1,6 @@
+run - node server.js 
+run with nodemon - nodemon server.js 
+
+listening at : http://javascripttester-eranotz50.c9.io/
+
+stop - ctrl + C 
