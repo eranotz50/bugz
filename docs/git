@@ -20,3 +20,7 @@ ctrl+shift+Z == exit .
 git diff == diff before add to staging area.
 git diff --cached == diff between local and stageing area.
 
+
+git status  == check for modifications
+git status -s == '' shorthand  
+

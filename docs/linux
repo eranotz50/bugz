@@ -1,6 +1,6 @@
 linux cheatsheet : 
 
-ls -a <hidden> -l <permissions>   : like dir  
+ls -a <hidden> -l <permissions>   : like dir   == use this to find .gitconfig and .gitignore
 cd .. : like cd.. 
 
 -------------------------------------------------------------
