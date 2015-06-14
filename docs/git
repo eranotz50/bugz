@@ -24,3 +24,4 @@ git diff --cached == diff between local and stageing area.
 git status  == check for modifications
 git status -s == '' shorthand  
 
+git checkout <file_name> == revert local changes.

@@ -1,29 +1,32 @@
-var bugzillaServerUrl =  "https://bugzilla.mozilla.org";
+var bugzillaServerUrl = "https://landfill.bugzilla.org";//  "https://bugzilla.mozilla.org";
 
 
 var app = angular.module('app', [])
 
+app.config(function($httpProvider) {
+    //Enable cross domain calls
+    $httpProvider.defaults.useXDomain = true;
+});
 
-.controller("LoginController",function($scope,$http){
+
+app.controller("LoginController",function($scope,$http){
     console.log("LoginController");
     
     $scope.OnLoginClick = function (email,password){
         
-          console.log(email);
-          console.log(password);
-        
-          var requestString = bugzillaServerUrl+"/rest/login?login="+ email + "&password=" + password ;
-        
-           $http.get(requestString)
-             .success(function(res){
-                console.log(res); 
-             }) ;
-    }
+        var url = bugzillaServerUrl+"/rest/login?login="+ email + "&password=" + password ;
+        console.log(url);
     
-})
+        $http.get(requestString)
+           .success(function(res){
+                console.log(res); 
+           }) 
+    }
+});
 
-  
-.controller("OnLoadedController",function($scope,$http){
+
+
+app.controller("OnLoadedController",function($scope,$http){
    console.log("loaded");
    
    $scope.OnClick = function (bugId){
@@ -35,7 +38,7 @@ var app = angular.module('app', [])
             $scope.bug = res.bugs[0];
         });
    }
-})
+});
 
   
   
