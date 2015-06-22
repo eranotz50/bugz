@@ -4,3 +4,14 @@ run with nodemon - nodemon server.js
 listening at : http://javascripttester-eranotz50.c9.io/
 
 stop - ctrl + C 
+
+debugging - 
+
+open the file you want to debug and press Run in the panel above. 
+
+
+resources : 
+
+//use body-phrser . https://codeforgeek.com/2014/09/handle-get-post-request-express-4/
+// read this docs  : https://nodejs.org/api/http.html#http_http_request_options_callback
+

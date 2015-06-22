@@ -26,13 +26,16 @@
       
     </div>
     
-    <!-- <input type=text ng-model="bugId"></input>
-    <button ng-click="OnClick(bugId)"/>
-    
-    <div ng-repeat="(key, value) in bug">
-         {{key}}  : {{ value }} 
+    <div ng-controller="OnLoadedController">
+      
+      <input type=text ng-model="bugId"></input>
+      <button ng-click="OnClick(bugId)"/>
+      
+      <div ng-repeat="(key, value) in bug">
+           {{key}}  : {{ value }} 
+      </div>
+      
     </div>
-    -->
     
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>

@@ -3,10 +3,10 @@ var bugzillaServerUrl = "https://landfill.bugzilla.org";//  "https://bugzilla.mo
 
 var app = angular.module('app', [])
 
-app.config(function($httpProvider) {
+/*app.config(function($httpProvider) {
     //Enable cross domain calls
     $httpProvider.defaults.useXDomain = true;
-});
+});*/
 
 
 app.controller("LoginController",function($scope,$http){
@@ -14,13 +14,29 @@ app.controller("LoginController",function($scope,$http){
     
     $scope.OnLoginClick = function (email,password){
         
-        var url = bugzillaServerUrl+"/rest/login?login="+ email + "&password=" + password ;
+        
+        var url =   "/login?login="+ email + "&password=" + password;
+        
+        var loginUrl = 'https://landfill.bugzilla.org/bugzilla-tip/rest/login?login=eranotz65@gmail.com&password=asdf1234';
+        $http.get(loginUrl).success(function(res){
+            /*console.log(this.arguments.length);
+            
+            for (var i = 0; i < this.arguments.length; i++) {
+                console.log(this.arguments[i]);
+            }*/
+            
+            console.log('res : ' + res);
+        });
+        
+        /*var url = bugzillaServerUrl+"/rest/login?login="+ email + "&password=" + password+"callback=JSON_CALLBACK" ;
         console.log(url);
     
-        $http.get(requestString)
-           .success(function(res){
-                console.log(res); 
-           }) 
+      
+        $http.jsonp(url)
+           .success(function(data,status,headers,config){
+                console.log('done')
+                console.log(data); 
+           });*/
     }
 });
 
@@ -33,7 +49,7 @@ app.controller("OnLoadedController",function($scope,$http){
 
     console.log(bugId); 
 
-    $http.get(bugzillaServerUrl+"/rest/bug/"+bugId)
+    $http.get('https://landfill.bugzilla.org/bugzilla-tip/rest/bug/'+bugId)
         .success(function(res){
             $scope.bug = res.bugs[0];
         });

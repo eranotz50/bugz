@@ -1,84 +1,59 @@
-//
-// # SimpleServer
-//
-// A simple chat server using Socket.IO, Express, and Async.
-//
-var http = require('http');
-var path = require('path');
-
-var async = require('async');
-var socketio = require('socket.io');
 var express = require('express');
+var path = require('path');
+var http = require('http');
+var https = require('https');
 
-//
-// ## SimpleServer `SimpleServer(obj)`
-//
-// Creates a new instance of SimpleServer with the following options:
-//  * `port` - The HTTP port to listen on. If `process.env.PORT` is set, _it overrides this value_.
-//
-var router = express();
-var server = http.createServer(router);
-var io = socketio.listen(server);
 
-router.use(express.static(path.resolve(__dirname, 'client')));
-var messages = [];
-var sockets = [];
+var app = express();
 
-io.on('connection', function (socket) {
-    messages.forEach(function (data) {
-      socket.emit('message', data);
-    });
+app.use(express.static(path.resolve(__dirname, 'client')));
 
-    sockets.push(socket);
+//use body-phrser . https://codeforgeek.com/2014/09/handle-get-post-request-express-4/
+var bugzillaUrl = 'https://landfill.bugzilla.org'; //  /login?login=eranotz65@gmail.com&password=asdf1234";
+var login = '/login?login=eranotz65@gmail.com&password=asdf1234';
+// read this docs  : https://nodejs.org/api/http.html#http_http_request_options_callback
 
-    socket.on('disconnect', function () {
-      sockets.splice(sockets.indexOf(socket), 1);
-      updateRoster();
-    });
+var options = {
+  host: bugzillaUrl,
+  path: login
+};
 
-    socket.on('message', function (msg) {
-      var text = String(msg || '');
-
-      if (!text)
-        return;
-
-      socket.get('name', function (err, name) {
-        var data = {
-          name: name,
-          text: text
-        };
-
-        broadcast('message', data);
-        messages.push(data);
-      });
-    });
-
-    socket.on('identify', function (name) {
-      socket.set('name', String(name || 'Anonymous'), function (err) {
-        updateRoster();
-      });
-    });
-  });
-
-function updateRoster() {
-  async.map(
-    sockets,
-    function (socket, callback) {
-      socket.get('name', callback);
-    },
-    function (err, names) {
-      broadcast('roster', names);
-    }
-  );
+var callback = function (response){
+        
+        var body = '';
+        
+        response.on('error', function(e){
+             console.log('error : ' + e);
+        });
+        
+        response.on('data', function(d) {
+            
+            body += d;
+            console.log('data : ' + body);
+        });
+        
+        response.on('end', function() {
+               console.log('end');
+               console.log('data : ' + body);
+            });
 }
 
-function broadcast(event, data) {
-  sockets.forEach(function (socket) {
-    socket.emit(event, data);
-  });
-}
+var loginUrl = 'https://landfill.bugzilla.org/bugzilla-tip/rest/login?login=eranotz65@gmail.com&password=asdf1234'
 
-server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
-  var addr = server.address();
-  console.log("Chat server listening at", addr.address + ":" + addr.port);
+
+
+console.log(loginUrl);
+var req =  https.get(loginUrl,callback);
+
+req.on('error',function(e){
+   console.log('error : ' + e ); 
 });
+
+
+app.get('/login', function(req,res){
+     
+     //res.send('login recived')
+     
+}); 
+
+app.listen(8080);
